@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ميلاند تايكون - لعبة حيوانات أليف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="splash" class="screen active">
+    <div class="splash-content">
+      <h1 id="title">ميلاند تايكون</h1>
+      <p id="subtitle">اجمع الحيوانات واطوّر قاعدتك وحقق ثروة!</p>
+      <button id="btnStart">ابدأ اللعب</button>
+    </div>
+  </div>
+
+  <div id="game" class="screen hidden">
+    <header id="hud">
+      <div class="resource" id="coinsDisplay">
+        <span class="icon">💰</span>
+        <span class="label">العملات</span>
+        <span class="value" id="coinsValue">0</span>
+      </div>
+      <div class="resource" id="incomeDisplay">
+        <span class="icon">⚡</span>
+        <span class="label">الدخل في الثانية</span>
+        <span class="value" id="incomeValue">0</span>
+      </div>
+      <div class="resource" id="levelDisplay">
+        <span class="icon">🏆</span>
+        <span class="label">المستوى</span>
+        <span class="value" id="levelValue">1</span>
+      </div>
+    </header>
+
+    <main id="world">
+      <div id="base" class="base">
+        <div class="base-decoration"></div>
+        <div id="petsContainer"></div>
+      </div>
+      <div id="clickZone" class="click-zone">
+        <div class="click-text">اضغط هنا لجمع مكافأة سريعة!</div>
+        <div id="clickEffect"></div>
+      </div>
+    </main>
+
+    <aside id="shop">
+      <h2>المتجر</h2>
+      <div id="petsList" class="pet-list"></div>
+      <div class="upgrades-section">
+        <h3>التطويرات</h3>
+        <div id="upgradesList"></div>
+      </div>
+    </aside>
+
+    <div id="toast"></div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
