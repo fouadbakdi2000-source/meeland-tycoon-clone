@@ -1,0 +1,11 @@
+{
+  "name": "meeland-tycoon",
+  "version": "1.0.0",
+  "description": "Meeland idle pet tycoon clone - HTML/CSS/JS game built with Cordova via GitHub Actions",
+  "scripts": {
+    "postinstall": "echo \"Ready for Cordova build via GitHub Actions\""
+  },
+  "devDependencies": {
+    "cordova": "^11.0.0"
+  }
+}

@@ -1,0 +1,45 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Cordova globally
+        run: npm install -g cordova@11.0.0
+
+      - name: Create Cordova project
+        run: |
+          cordova create meeland-app com.example.meeland "Meeland Tycoon"
+          cd meeland-app
+          cordova platform add android@11.0.0
+          cp ../index.html www/
+          cp ../style.css www/
+          cp ../game.js www/
+          cp ../config.xml .
+
+      - name: Build release APK
+        working-directory: ./meeland-app
+        run: cordova build android --release
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: meeland-tycoon-apk
+          path: meeland-app/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+          retention-days: 30
